@@ -1,126 +1,168 @@
-/* Dark theme */
-:root {
-  --background: #121212;
-  --text-color: #f5f5f5;
-  --accent-color: #4caf50;
-  --card-bg: #1e1e1e;
-}
-
+/* General Styles */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: var(--background);
-  color: var(--text-color);
+  background-color: #121212 ;
+  color: #333;
 }
 
+/*#f4f4f4*/
 .container {
-  max-width: 900px;
-  margin: 0 auto;
+  max-width: 800px;
+  margin: 20px auto;
   padding: 20px;
-}
-
-header {
-  text-align: center;
-  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
 }
 
 header h1 {
-  font-size: 2rem;
-  margin: 0;
-  color: var(--accent-color);
+  color: #4caf50;
+  text-align: center;
 }
 
 header p {
-  font-size: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
 }
 
-.form-section {
-  margin-bottom: 20px;
-  padding: 20px;
-  background: var(--card-bg);
-  border-radius: 8px;
+.very-small {
+  font-size: 8px; /* Adjust this value as needed */
 }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-input {
-  width: calc(100% - 20px);
+.course-section input {
+  width: 45%;
   padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid var(--accent-color);
+  margin: 10px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  background: #222;
-  color: var(--text-color);
-}
-
-button {
-  background: var(--accent-color);
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-button:hover {
-  background: #388e3c;
 }
 
 .timetable-section {
-  display: flex;
-  gap: 20px;
-}
-
-#legend {
-  flex: 1;
-}
-
-#legend h2 {
-  font-size: 1.5rem;
-}
-
-#legend ul {
-  list-style: none;
-  padding: 0;
-}
-
-#legend ul li {
-  margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 #timetable {
-  flex: 2;
+  width: 100%;
+  border-collapse: collapse;
 }
 
-#timetable h2 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  gap: 2px;
-}
-
-.grid div {
-  background: var(--card-bg);
-  border: 1px solid var(--accent-color);
+#timetable th,
+#timetable td {
+  border: 2px solid #333; /* Darker borders */
   text-align: center;
   padding: 10px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
 }
 
-.grid .lunch {
-  grid-column: span 8;
-  background: #ff5722;
+#timetable th {
+  background-color: #4caf50;
   color: #fff;
   font-weight: bold;
 }
+
+#timetable td.editable {
+  cursor: pointer;
+  background-color: #f9f9f9; /* Default editable color */
+}
+
+#timetable td.editable:hover {
+  background-color: #e0f7fa;
+}
+
+.lunch {
+  background-color: #ff5722;
+  color: #fff;
+  font-weight: bold;
+}
+
+.buttons-section {
+  margin-top: 20px;
+  text-align: center;
+}
+
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+  position: relative;
+  z-index: 3;
+}
+
+button:hover {
+  background-color: #388e3c;
+}
+
+/* Hiding non-timetable elements for printing */
+@media print {
+  body {
+    background: white;
+  }
+  header,
+  .buttons-section {
+    display: none; /* Hide the header and buttons */
+    position: relative;
+    z-index: 3;
+  }
+  .container {
+    box-shadow: none;
+  }
+}
+
+
+.timetable-grid {
+  display: grid;
+  grid-template-columns: 150px repeat(7, 1fr); /* One column for days, the rest for time slots */
+  gap: 2px;
+}
+
+#timetable-grid {
+  display: grid;
+  grid-template-columns: 150px repeat(8, 1fr); /* One column for days, 8 for time slots */
+  gap: 2px;
+  position: relative; /* Needed for the pseudo-element to position correctly */
+  z-index: 1; /* Ensure content is on top of the watermark */
+}
+
+#timetable-grid::before {
+  content: ''; /* This generates the pseudo-element */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://raw.githubusercontent.com/Vai838/Timetablegenerator/refs/heads/main/elfenix.png'); /* Replace with your image path */
+  background-size: contain; /* Adjust to fit the watermark */
+  background-position: left;
+  background-repeat: no-repeat;
+  opacity: 0.1; /* Adjust transparency to make the watermark subtle */
+  pointer-events: none; /* Prevent the pseudo-element from blocking clicks */
+  z-index: 0; /* Place it behind the grid */
+}
+
+
+.day-cell, .time-slot-cell {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.day-cell {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+footer {
+  text-align: center; /* Centers the text inside the footer */
+  margin-top: 20px; /* Adds some space above the footer */
+  padding: 10px; /* Adds padding inside the footer */
+  background-color: #121212; /* Optional: background color for the footer */
+  color: #fff; /* Optional: text color */
+}
+

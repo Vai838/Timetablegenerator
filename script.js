@@ -29,6 +29,20 @@ function generateTimeSlots() {
   }
 }
 
+function printAsPDF() {
+  window.print();
+}
+
+function printAsPNG() {
+  html2canvas(document.querySelector(".container")).then((canvas) => {
+    const link = document.createElement("a");
+    link.download = "timetable.png";
+    link.href = canvas.toDataURL();
+    link.click();
+  });
+}
+
+
 // Add subjects to the legend and timetable
 function addSubject() {
   const name = document.getElementById("subject-name").value;

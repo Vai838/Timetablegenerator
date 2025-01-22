@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timetable Generator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Timetable Generator</h1>
+      <p>Create your custom timetable with color-coded subjects!</p>
+    </header>
+
+    <section class="form-section">
+      <form id="subject-form">
+        <label for="subject-name">Subject Name:</label>
+        <input type="text" id="subject-name" placeholder="Enter subject name">
+
+        <label for="subject-short">Short Form:</label>
+        <input type="text" id="subject-short" placeholder="Short form (e.g., MP)" maxlength="5">
+
+        <label for="subject-color">Choose Color:</label>
+        <input type="color" id="subject-color">
+
+        <button type="button" onclick="addSubject()">Add Subject</button>
+      </form>
+    </section>
+
+    <section class="timetable-section">
+      <div id="legend">
+        <h2>Legend</h2>
+        <ul id="subject-list"></ul>
+      </div>
+      <div id="timetable">
+        <h2>Timetable</h2>
+        <div class="grid">
+          <!-- Grid slots will be populated dynamically -->
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

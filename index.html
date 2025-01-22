@@ -13,32 +13,98 @@
       <p>Create your custom timetable with color-coded subjects!</p>
     </header>
 
-    <section class="form-section">
-      <form id="subject-form">
-        <label for="subject-name">Subject Name:</label>
-        <input type="text" id="subject-name" placeholder="Enter subject name">
-
-        <label for="subject-short">Short Form:</label>
-        <input type="text" id="subject-short" placeholder="Short form (e.g., MP)" maxlength="5">
-
-        <label for="subject-color">Choose Color:</label>
-        <input type="color" id="subject-color">
-
-        <button type="button" onclick="addSubject()">Add Subject</button>
-      </form>
+    <!-- Course and Semester Section -->
+    <section class="course-section">
+      <input type="text" id="course-name" placeholder="Enter Course Name">
+      <input type="text" id="semester" placeholder="Enter Semester">
     </section>
 
+    <!-- Timetable Section -->
     <section class="timetable-section">
-      <div id="legend">
-        <h2>Legend</h2>
-        <ul id="subject-list"></ul>
-      </div>
-      <div id="timetable">
-        <h2>Timetable</h2>
-        <div class="grid">
-          <!-- Grid slots will be populated dynamically -->
-        </div>
-      </div>
+      <table id="timetable">
+        <thead>
+          <tr>
+            <th>Days</th>
+            <th>9:00-9:50</th>
+            <th>9:55-10:45</th>
+            <th>10:50-11:40</th>
+            <th>11:45-12:35</th>
+            <th>12:40-1:30</th>
+            <th>Lunch</th>
+            <th>2:30-3:20</th>
+            <th>3:25-4:15</th>
+            <th>4:20-5:10</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monday</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td class="lunch" colspan="1">Lunch Break</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+          </tr>
+          <tr>
+            <td>Tuesday</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td class="lunch" colspan="1">Lunch Break</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+          </tr>
+          <tr>
+            <td>Wednesday</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td class="lunch" colspan="1">Lunch Break</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+          </tr>
+          <tr>
+            <td>Thursday</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td class="lunch" colspan="1">Lunch Break</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+          </tr>
+          <tr>
+            <td>Friday</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td class="lunch" colspan="1">Lunch Break</td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+            <td contenteditable="true"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Buttons for Saving Timetable -->
+    <section class="buttons-section">
+      <button onclick="printAsPDF()">Print as PDF</button>
+      <button onclick="printAsPNG()">Print as PNG</button>
     </section>
   </div>
 

@@ -166,3 +166,31 @@ footer {
   color: #fff; /* Optional: text color */
 }
 
+
+@media (max-width: 768px) {
+  #timetable {
+    font-size: 12px; /* Reduce font size */
+  }
+
+  #timetable-grid {
+    grid-template-columns: 100px repeat(7, 1fr); /* Adjust grid column size for mobile */
+  }
+
+  .container {
+    padding: 10px;
+    margin: 0;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+
+  footer p {
+    font-size: 0.8rem;
+  }
+}
+
+.spacer {
+  height: 3em; /* Adjust the height as needed */
+}

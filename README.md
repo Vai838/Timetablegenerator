@@ -1,4 +1,4 @@
-# **Timetable Generator with Watermarked Background**
+# **Timetable Generator**
 
 A responsive and interactive web application for creating, editing, and exporting timetables. This project allows users to add their custom timetable, print it as a PDF or PNG, and includes a watermark image as the background. It’s designed with user-friendly features and supports modern web standards.
 

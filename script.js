@@ -43,8 +43,8 @@ function generateTimetable() {
       if (slot.includes("12:45 - 01:40")) {
         cell.className = "lunch";
         cell.textContent = "Lunch Break";
-      } else if (index >= 8) {
-        // Beyond the 8th period, leave cells empty
+      } else if (index >= 9) {
+        // Beyond the 9th period, leave cells empty
         cell.className = "empty";
         cell.textContent = "";
       } else {

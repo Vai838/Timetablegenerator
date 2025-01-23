@@ -91,15 +91,22 @@ function printAsPDF() {
 
 
 
+
 function printAsPNG() {
   html2canvas(document.getElementById('timetable-grid'), {
   useCORS: true, // Ensures CORS compliance for external resources
+  scale: 2, // Higher resolution for better quality
+    width: timetable.scrollWidth, // Capture the full width of the grid
+    height: timetable.scrollHeight, // Capture the full height of the grid
+    windowWidth: timetable.scrollWidth, // Ensure the viewport width matches the content
+    windowHeight: timetable.scrollHeight, // Ensure the viewport height matches the content
 }).then((canvas) => {
   const link = document.createElement('a');
   link.download = 'timetable.png';
   link.href = canvas.toDataURL();
   link.click();
 });
+
 
 }
 

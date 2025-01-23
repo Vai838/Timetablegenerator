@@ -1,5 +1,6 @@
 const timetableGrid = document.getElementById("timetable-grid");
 const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+const legendContainer = document.getElementById("legend-container");
 
 
 const timeSlots = [
@@ -14,7 +15,7 @@ const timeSlots = [
   "04:35 - 05:30",
 ];
 
-
+let legend = {}; // To store the subject legend information
 
 function generateTimetable() {
   // Set up grid columns
@@ -72,6 +73,12 @@ function addSubject() {
     return;
   }
 
+  // Update the legend object
+  legend[short] = { name, color };
+
+  // Update the legend UI
+  updateLegend();
+  
   const gridSlots = document.querySelectorAll(".editable");
   gridSlots.forEach((slot) => {
     slot.addEventListener("click", function () {
@@ -85,9 +92,34 @@ function addSubject() {
   document.getElementById("subject-short").value = "";
 }
 
+// Function to update the legend UI
+function updateLegend() {
+  legendContainer.innerHTML = ""; // Clear existing legend
+  for (const [short, { name, color }] of Object.entries(legend)) {
+    const legendItem = document.createElement("div");
+    legendItem.style.display = "flex";
+    legendItem.style.alignItems = "center";
+    legendItem.style.marginBottom = "5px";
+
+    const colorBox = document.createElement("div");
+    colorBox.style.width = "20px";
+    colorBox.style.height = "20px";
+    colorBox.style.backgroundColor = color;
+    colorBox.style.marginRight = "10px";
+
+    const text = document.createElement("span");
+    text.textContent = `${short}: ${name}`;
+
+    legendItem.appendChild(colorBox);
+    legendItem.appendChild(text);
+    legendContainer.appendChild(legendItem);
+  }
+}
+
 function printAsPDF() {
   window.print();
 }
+
 
 
 function printAsPNG() {
@@ -108,7 +140,6 @@ function printAsPNG() {
   link.href = canvas.toDataURL();
   link.click();
 });
-
 
 }
 

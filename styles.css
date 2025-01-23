@@ -28,8 +28,10 @@ header p {
 }
 
 .very-small {
-  font-size: 8px; /* Adjust this value as needed */
+  font-size: 11px;
+  color: #2F65FE; /* Adjust this value as needed */
 }
+
 
 .course-section input {
   width: 45%;

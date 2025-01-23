@@ -90,16 +90,18 @@ function printAsPDF() {
 }
 
 
-
-
 function printAsPNG() {
+// Get the actual dimensions of the timetable grid
+  const timetable = document.getElementById('timetable-grid');
+  const width = timetable.scrollWidth;
+  const height = timetable.scrollHeight;
   html2canvas(document.getElementById('timetable-grid'), {
   useCORS: true, // Ensures CORS compliance for external resources
-  scale: 2, // Higher resolution for better quality
-    width: timetable.scrollWidth, // Capture the full width of the grid
-    height: timetable.scrollHeight, // Capture the full height of the grid
-    windowWidth: timetable.scrollWidth, // Ensure the viewport width matches the content
-    windowHeight: timetable.scrollHeight, // Ensure the viewport height matches the content
+  scale: window.devicePixelRatio || 2, // Adjust scale for higher resolution
+  width: width, // Full width of the timetable grid
+  height: height, // Full height of the timetable grid
+  scrollX: 0, // Prevent scrolling issues
+  scrollY: 0, // Prevent scrolling issues
 }).then((canvas) => {
   const link = document.createElement('a');
   link.download = 'timetable.png';
